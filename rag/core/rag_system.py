@@ -1,5 +1,4 @@
 from rag import Config
-from rag.core.pdf_processor import PDFProcessor
 from rag.core.embedder import DocumentEmbedder
 from rag.core.chat_manager import ChatManager
 from rag.handler.singal_handler import SignalHandler
@@ -10,7 +9,6 @@ logger = setup_logger(__name__)
 class RAGSystem:
     def __init__(self):
         self.config = Config.get_instance()
-        self.pdf_processor = PDFProcessor()
         self.document_embedder = DocumentEmbedder()
         self.chat_manager = ChatManager()
         self.collection = None
@@ -28,16 +26,16 @@ class RAGSystem:
         except Exception as e:
             logger.error(f"리소스 정리 중 오류 발생: {str(e)}")
 
-
     def initialize(self):
-        """시스템 초기화 및 필요시 임베딩 수행"""
+        """
+        시스템 초기화 및 필요시 임베딩 수행
+        디렉토리 내 모든 지원 확장자 파일을 각 processor로 처리하여 임베딩
+        """
         self.collection, is_new = self.document_embedder.initialize_collection()
-
         if is_new:
             logger.info("새로운 임베딩을 시작합니다...")
-            raw_text = self.pdf_processor.load_pdfs()
-            chunks = self.pdf_processor.split_text(raw_text)
-            self.document_embedder.embed_documents(chunks, self.collection)
+            # files 디렉토리 내 모든 지원 문서 임베딩
+            self.document_embedder.embed_all_documents("files", collection_name="rag_collection")
             logger.info("임베딩이 완료되었습니다!")
         else:
             logger.info("기존 임베딩을 사용합니다.")
