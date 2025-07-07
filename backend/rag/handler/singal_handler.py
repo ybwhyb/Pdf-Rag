@@ -1,6 +1,6 @@
 import signal, sys
 from typing import Callable
-from rag.utils.logger import  setup_logger
+from backend.rag.utils.logger import  setup_logger
 
 logger = setup_logger(__name__)
 

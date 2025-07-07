@@ -1,5 +1,5 @@
 import os, pymupdf4llm
-from rag.config.settings import Config
+from backend.rag.config.settings import Config
 from .document_processor import DocumentProcessor
 
 

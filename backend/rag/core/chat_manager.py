@@ -3,7 +3,7 @@ import ollama
 
 class ChatManager:
     def __init__(self):
-        from rag.config.settings import Config
+        from backend.rag.config.settings import Config
         config = Config.get_instance()
         self.model_name = config.LLM_MODEL
         self._system_msg = {"role": "system", "content": ""}

@@ -1,7 +1,7 @@
 import os, chromadb
 from sentence_transformers import SentenceTransformer
-from rag.core.processor_factory import PROCESSOR_MAP
-from rag.config.settings import Config
+from backend.rag.core.processor_factory import PROCESSOR_MAP
+from backend.rag.config.settings import Config
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 
 class DocumentEmbedder:

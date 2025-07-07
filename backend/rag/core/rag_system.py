@@ -1,8 +1,8 @@
-from rag import Config
-from rag.core.embedder import DocumentEmbedder
-from rag.core.chat_manager import ChatManager
-from rag.handler.singal_handler import SignalHandler
-from rag.utils.logger import setup_logger
+from backend.rag import Config
+from backend.rag.core.embedder import DocumentEmbedder
+from backend.rag.core.chat_manager import ChatManager
+from backend.rag.handler.singal_handler import SignalHandler
+from backend.rag.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
