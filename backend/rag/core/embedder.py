@@ -2,7 +2,7 @@ import os, chromadb
 from sentence_transformers import SentenceTransformer
 from backend.rag.core.processor_factory import PROCESSOR_MAP
 from backend.rag.config.settings import Config
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_text_splitters  import RecursiveCharacterTextSplitter
 
 class DocumentEmbedder:
     def __init__(self):
