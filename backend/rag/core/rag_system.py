@@ -20,8 +20,8 @@ class RAGSystem:
     def _cleanup(self):
         """Clean up resources before shutdown"""
         try:
-            if hasattr(self, 'document_embedder') and hasattr(self.document_embedder, 'client'):
-                self.document_embedder.client.close()
+            if hasattr(self, 'document_embedder'):
+                self.document_embedder = None
             logger.info("리소스 정리가 완료되었습니다.")
         except Exception as e:
             logger.error(f"리소스 정리 중 오류 발생: {str(e)}")
